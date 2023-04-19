@@ -16,12 +16,12 @@ with open('requirements.txt') as f:
 
 
 setup(
-    name='arrendatools_ipc',
+    name='arrendatools.actualiza_renta',
     version=__version__,
-    description='Módulo de Python que realiza la actualización de rentas de alquiler por anualidades completas con el IPC (LAU) descrita en la web del INE de España. ',
+    description='Módulo de Python que realiza la actualización de rentas de alquiler por anualidades completas con el IPC (LAU) descrita en la web del INE de España.',
     long_description=readme,
     long_description_content_type="text/markdown",
-    url='https://github.com/hokus15/ArrendaToolsIPC',
+    url='https://github.com/hokus15/ArrendaToolsActualizaRenta',
     author='hokus15',
     author_email='hokus@hotmail.com',
     packages=find_packages(exclude=('tests', '.vscode', '.github')),
