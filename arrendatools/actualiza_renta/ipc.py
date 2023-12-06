@@ -86,41 +86,44 @@ def actualiza_renta_IPC(mes, anyo_inicial, anyo_final, cantidad):
     """
     dividendo = 0
     divisor = 0
-    if anyo_inicial < 1954 or anyo_final < 1954:
-        raise ValueError("El año debe ser posterior a 1953.")
-    if anyo_inicial == 1954 and mes < 3:
-        raise ValueError("Sólo hay datos de IPC a partir de Marzo de 1954.")
-    if anyo_inicial < 2002 and anyo_final >= 2002:
-        # Actualización de rentas de alquiler con el IPC entre un mes anterior a enero de 2002 y otro posterior
-        # Indice LAU mes final
-        # El índice LAU se obtiene multiplicando el índice general del mes, en base 2021 (Llamando al método obtenerSerieINE con la serie IPC251852) por el coeficiente LAU (constante COEFICIENTES_LAU_BASE_2021) de ese mismo mes.
-        # NOTA: El cociente de índices se deberá redondear a 3 decimales antes de multiplicarlo por la renta inicial
-        dividendo = round(obtener_IPC(anyo_final, mes) * _COEFICIENTES_LAU_BASE_2021[mes - 1], 3)
-        # print("Indice LAU: " + dividend)
-        # IPC Mes inicial
-        # Se obtiene de la tabla TABLA_IPC_BASE_1992
-        divisor = round(_TABLA_IPC_BASE_1992[anyo_inicial][mes - 1], 3)
-        # print("IPC mes incial: " + divisor)
-    elif anyo_inicial < 2002 and anyo_final < 2002:
-        # Actualización de rentas de alquiler con el IPC entre dos meses anteriores a enero de 2002
-        # Se obtiene de la tabla TABLA_IPC_BASE_1992
-        dividendo = round(_TABLA_IPC_BASE_1992[anyo_final][mes - 1], 3)
-        # print("IPC mes final: " + dividend)
-        # Se obtiene de la tabla TABLA_IPC_BASE_1992
-        divisor = round(_TABLA_IPC_BASE_1992[anyo_inicial][mes - 1], 3)
-        # print("IPC mes incial: " + divisor)
-    else:
-        # Actualización de rentas de alquiler con el IPC entre dos meses posteriores a enero de 2002
-        # IPC mes final
-        dividendo = round(obtener_IPC(anyo_final, mes), 3)
-        # print("IPC mes final: " + str(dividendo))
-        # IPC mes inicial
-        divisor = round(obtener_IPC(anyo_inicial, mes), 3)
-        # print("IPC mes incial: " + str(divisor))
-    if dividendo == 0 or math.isnan(dividendo):
-        raise ValueError(f"Renta no actualizada: Todavía no hay datos disponibles de IPC para {_NOMBRES_MES_ES[mes-1]} de {anyo_final}")
+    try:
+        if anyo_inicial < 1954 or anyo_final < 1954:
+            raise ValueError("El año debe ser posterior a 1953.")
+        if anyo_inicial == 1954 and mes < 3:
+            raise ValueError("Sólo hay datos de IPC a partir de Marzo de 1954.")
+        if anyo_inicial < 2002 and anyo_final >= 2002:
+            # Actualización de rentas de alquiler con el IPC entre un mes anterior a enero de 2002 y otro posterior
+            # Indice LAU mes final
+            # El índice LAU se obtiene multiplicando el índice general del mes, en base 2021 (Llamando al método obtenerSerieINE con la serie IPC251852) por el coeficiente LAU (constante COEFICIENTES_LAU_BASE_2021) de ese mismo mes.
+            # NOTA: El cociente de índices se deberá redondear a 3 decimales antes de multiplicarlo por la renta inicial
+            dividendo = round(obtener_IPC(anyo_final, mes) * _COEFICIENTES_LAU_BASE_2021[mes - 1], 3)
+            # print("Indice LAU: " + dividend)
+            # IPC Mes inicial
+            # Se obtiene de la tabla TABLA_IPC_BASE_1992
+            divisor = round(_TABLA_IPC_BASE_1992[anyo_inicial][mes - 1], 3)
+            # print("IPC mes incial: " + divisor)
+        elif anyo_inicial < 2002 and anyo_final < 2002:
+            # Actualización de rentas de alquiler con el IPC entre dos meses anteriores a enero de 2002
+            # Se obtiene de la tabla TABLA_IPC_BASE_1992
+            dividendo = round(_TABLA_IPC_BASE_1992[anyo_final][mes - 1], 3)
+            # print("IPC mes final: " + dividend)
+            # Se obtiene de la tabla TABLA_IPC_BASE_1992
+            divisor = round(_TABLA_IPC_BASE_1992[anyo_inicial][mes - 1], 3)
+            # print("IPC mes incial: " + divisor)
+        else:
+            # Actualización de rentas de alquiler con el IPC entre dos meses posteriores a enero de 2002
+            # IPC mes final
+            dividendo = round(obtener_IPC(anyo_final, mes), 3)
+            # print("IPC mes final: " + str(dividendo))
+            # IPC mes inicial
+            divisor = round(obtener_IPC(anyo_inicial, mes), 3)
+            # print("IPC mes incial: " + str(divisor))
+    except ConnectionError as err:
+        print(err)
+    if dividendo == 0 or math.isnan(dividendo) or math.isnan(divisor):
+        raise ValueError(f"Renta no actualizada: No he podido recuperar los datos de IPC para {_NOMBRES_MES_ES[mes-1]} de {anyo_final}")
 
-    # Para calcula la tasa de variación se hace:((IPC mes final / IPC mes inicial) - 1) * 100
+    # Para calcular la tasa de variación se hace:((IPC mes final / IPC mes inicial) - 1) * 100
     # Lo multiplico por 100 redondeo a 1 decimal y luego vuelvo a dividir entre 100 y luego rendondeo el resultado a 3 decimales.
     # Así se consigue que de exactamente la misma tasa de variación que en la web del INE.
     tasa_variacion = round(round(((dividendo / divisor) - 1) * 100, 1) / 100, 3)
