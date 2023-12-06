@@ -64,7 +64,7 @@ class ActualizaRentaIPCTestCase(unittest.TestCase):
         hoy = date.today()  # Obtiene la fecha actual
         anyo_siguiente = hoy.year + 1  # Año que viene
         # Caso: Actualización de rentas de alquiler de un periodo en el que todavía no se ha publacado los datos del IPC
-        with self.assertRaisesRegex(ValueError, f"Renta no actualizada: Todavía no hay datos disponibles de IPC para Febrero de {anyo_siguiente}"):
+        with self.assertRaisesRegex(ValueError, f"Renta no actualizada: No he podido recuperar los datos de IPC para Febrero de {anyo_siguiente}"):
             actualiza_renta_IPC(2, 2022, anyo_siguiente, 400.00)
 
 
