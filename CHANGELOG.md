@@ -2,6 +2,19 @@
 
 
 
+## v0.1.4 (2023-12-07)
+
+### Fix
+
+* fix(build-release): fix to build release ([`6e9083b`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/6e9083b8b1f972f1a2e690e34378c3d9cc5237fe))
+
+### Unknown
+
+* Merge pull request #9 from hokus15/devel
+
+fix(build-release): fix to build release ([`3f46f6a`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/3f46f6ab11c4d320703621f94e4cecec71b9cc9b))
+
+
 ## v0.1.3 (2023-12-07)
 
 ### Fix
