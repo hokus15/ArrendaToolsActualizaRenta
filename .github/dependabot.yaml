@@ -9,7 +9,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "6:15"
+      time: "06:15"
     commit-message:
       prefix: "build"
       include: "scope"
