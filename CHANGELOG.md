@@ -2,6 +2,19 @@
 
 
 
+## v0.1.3 (2023-12-07)
+
+### Fix
+
+* fix(bump-version): bump version to pusblish to pypi ([`c681ca5`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/c681ca529ab44accf92ba17b755dab95c93a66fe))
+
+### Unknown
+
+* Merge pull request #8 from hokus15/devel
+
+fix(bump-version): bump version to pusblish to pypi ([`b3ac648`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/b3ac6489e98a8a60d7aa916bd09707fae9c717a2))
+
+
 ## v0.1.2 (2023-12-07)
 
 ### Build
