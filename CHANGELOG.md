@@ -2,6 +2,60 @@
 
 
 
+## v0.1.2 (2023-12-07)
+
+### Build
+
+* build(dependabot): fix error ([`c1d2023`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/c1d2023a843b318c6082a9d2c708426fe0cefb86))
+
+* build(dependabot): added pip packege-ecosystem ([`965c108`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/965c1080d2baf7b22ef63c82e29ead6c55db5b0b))
+
+* build(deps): bump actions/setup-python from 4 to 5
+
+Bumps [actions/setup-python](https://github.com/actions/setup-python) from 4 to 5.
+- [Release notes](https://github.com/actions/setup-python/releases)
+- [Commits](https://github.com/actions/setup-python/compare/v4...v5)
+
+---
+updated-dependencies:
+- dependency-name: actions/setup-python
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`712841e`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/712841e2793757e65456e2c901ae50eaa7500ef8))
+
+### Ci
+
+* ci(python-semantic-release): bump version to 8.3.0 ([`50a08d4`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/50a08d4ccb0dc6375a6cf7c95b59966ccf63cc0a))
+
+### Fix
+
+* fix(release): fix release generation ([`7554cbe`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/7554cbe8f4776d96ed3b012addf88e77dc134df0))
+
+* fix(force-release): no funciotional change to force release ([`05b7968`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/05b7968be445513528c1a0bb494e71c6e16ece4c))
+
+### Unknown
+
+* Merge pull request #7 from hokus15/devel
+
+Devel ([`39b6458`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/39b64582d3312061df2a78d78f16a8aa9a634aae))
+
+* Merge remote-tracking branch &#39;origin/master&#39; into devel ([`4b8533d`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/4b8533d85f0080c95a1e84500f24b857b9cddf50))
+
+* Merge pull request #6 from hokus15/devel
+
+fix(force-release): no funciotional change to force release ([`a9fba94`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/a9fba949becd71ad9ee25669c8504b67173305bf))
+
+* Merge pull request #5 from hokus15/devel
+
+Devel ([`c05ba03`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/c05ba039f1773c2a62832a43d771ae0240bda1e1))
+
+* Merge pull request #4 from hokus15/dependabot/github_actions/actions/setup-python-5
+
+build(deps): bump actions/setup-python from 4 to 5 ([`961adb1`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/961adb17f5c0bec2858c73b1cd83c4ec003ef8a7))
+
+
 ## v0.1.1 (2023-12-06)
 
 ### Build
