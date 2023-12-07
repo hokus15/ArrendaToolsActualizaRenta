@@ -31,8 +31,9 @@ jobs:
         run: |
           python -m unittest discover -s test -p "test_*.py"
   release:
+    name: Semantic Release
     runs-on: ubuntu-latest
-    concurrency: release
+    concurrency: push
     needs: test
     permissions:
       contents: write
@@ -43,8 +44,21 @@ jobs:
         fetch-depth: 0
     - name: Python Semantic Release
       id: release
-      uses: python-semantic-release/python-semantic-release@v7.33.5
+      uses: python-semantic-release/python-semantic-release@v8.3.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        repository_username: __token__
-        repository_password: ${{ secrets.PYPI_TOKEN }}
+        root_options: "-vv"
+    - name: Publish package distributions to PyPI
+      id: pypi-publish
+      uses: pypa/gh-action-pypi-publish@release/v1
+      # NOTE: DO NOT wrap the conditional in ${{ }} as it will always evaluate to true.
+      # See https://github.com/actions/runner/issues/1173
+      if: steps.release.outputs.released == 'true'
+      with:
+        verbose: true
+    - name: Publish package distributions to GitHub Releases
+      id: github-release
+      uses: python-semantic-release/upload-to-gh-release@main
+      if: steps.release.outputs.released == 'true'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
