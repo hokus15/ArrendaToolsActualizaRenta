@@ -2,6 +2,27 @@
 
 
 
+## v0.1.6 (2023-12-07)
+
+### Fix
+
+* fix(release): fix wrong version file path ([`044ff3c`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/044ff3cf241ef945fbec9bb70878daec6c70e176))
+
+* fix(release): another try to fix release ([`ad01c85`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/ad01c85c589bb370e7bbeafc2f8143123a745cce))
+
+### Unknown
+
+* Merge pull request #13 from hokus15/devel
+
+Devel ([`42d1cdb`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/42d1cdb4a768e3046b8471682ccc2ea34cd8dfe9))
+
+* Merge remote-tracking branch &#39;origin/master&#39; into devel ([`c322ba2`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/c322ba278045c041b379a1f2e4612f3f4c18407a))
+
+* Merge pull request #12 from hokus15/devel
+
+fix(release): another try to fix release ([`ce29175`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/ce29175c9448e6b1d2984952c5fe295272ac4f6a))
+
+
 ## v0.1.5 (2023-12-07)
 
 ### Fix
