@@ -4,7 +4,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/hokus15/ArrendaToolsActualizaRenta?logo=github)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/hokus15/ArrendaToolsActualizaRenta?logo=github)
 
-Este es un módulo de Python que te permite actualizar las rentas de alquiler en España por anualidades completas.
+Módulo de Python que te permite actualizar las rentas de alquiler en España por anualidades completas.
 Puede hacer el cálculo con el IPC (LAU), según lo descrito en la página web del [Instituto Nacional de Estadística (INE)](https://www.ine.es/ss/Satellite?c=Page&cid=1254735905720&pagename=ProductosYServicios%2FPYSLayout&L=0&p=1254735893337). Es equivalente a utilizar la calculadora publicada por el INE en el siguiente enlace [Actualización de rentas con el IPC general (sistema IPC base 2021) para periodos anuales completos](https://www.ine.es/calcula).
 
 ## Limitaciones
