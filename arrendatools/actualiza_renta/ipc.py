@@ -1,4 +1,4 @@
-from arrendatools.ine import obtener_serie_INE
+from arrendatools.actualiza_renta.ine import obtener_serie_INE
 import datetime
 import math
 
