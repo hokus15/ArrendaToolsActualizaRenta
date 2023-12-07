@@ -2,6 +2,27 @@
 
 
 
+## v0.1.5 (2023-12-07)
+
+### Fix
+
+* fix(release): fix release generation ([`ba8aec5`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/ba8aec53c8178ff8bb69443a326112cb47622ebe))
+
+* fix(build): downgrade to python-semantic-release 7.33.5 ([`2f0225d`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/2f0225d061ae5acb7e669a09fa0057868cff9846))
+
+### Unknown
+
+* Merge pull request #11 from hokus15/devel
+
+fix(release): fix release generation ([`7870d51`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/7870d519b419d3c10c3397f0f0c15f7d9cc94412))
+
+* Merge pull request #10 from hokus15/devel
+
+Devel ([`948a906`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/948a90639670178e956d05142e65b2d2af7cd9d1))
+
+* Merge remote-tracking branch &#39;origin/master&#39; into devel ([`c9c33aa`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/c9c33aa41b5e5b78ed97e6bf277e2f3087ea5006))
+
+
 ## v0.1.4 (2023-12-07)
 
 ### Fix
