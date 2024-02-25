@@ -121,7 +121,7 @@ def actualiza_renta_IPC(mes, anyo_inicial, anyo_final, cantidad):
     except ConnectionError as err:
         print(err)
     if dividendo == 0 or math.isnan(dividendo) or math.isnan(divisor):
-        raise ValueError(f"Renta no actualizada: No he podido recuperar los datos de IPC para {_NOMBRES_MES_ES[mes-1]} de {anyo_final}")
+        raise ValueError(f"Renta no actualizada: No he podido recuperar los datos de IPC para {_NOMBRES_MES_ES[mes - 1]} de {anyo_final}")
 
     # Para calcular la tasa de variación se hace:((IPC mes final / IPC mes inicial) - 1) * 100
     # Lo multiplico por 100 redondeo a 1 decimal y luego vuelvo a dividir entre 100 y luego rendondeo el resultado a 3 decimales.
