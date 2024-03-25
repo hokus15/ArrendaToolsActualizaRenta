@@ -11,7 +11,9 @@ _SERIE_IPC = 'IPC251852'
 
 # Cada número representa el coeficiente del mes del indice 0 = enero, 1=febrero,... 11=diciembre
 # https://www.ine.es/ss/Satellite?c=Page&cid=1254735905720&pagename=ProductosYServicios%2FPYSLayout&L=0&p=1254735893337
-# _COEFICIENTES_LAU_BASE_2016 = [1.843315, 1.849032, 1.84201, 1.835371, 1.835434, 1.83756, 1.855259, 1.858562, 1.849043, 1.837433, 1.832176, 1.834031] # Estos coeficientes se usaron hasta 2021
+# Estos coeficientes se usaron hasta 2021
+# _COEFICIENTES_LAU_BASE_2016 = [1.843315, 1.849032, 1.84201, 1.835371, 1.835434, 1.83756, 1.855259, 1.858562, 1.849043, 1.837433, 1.832176, 1.834031]
+
 _COEFICIENTES_LAU_BASE_2021 = [1.977332, 1.983464, 1.975933, 1.96881, 1.968878, 1.971159, 1.990145, 1.993687, 1.983476, 1.971022, 1.965383, 1.967373]
 
 # Nota: Los datos anteriores a 1961 corresponden al Índice Nacional Urbano.
@@ -94,7 +96,8 @@ def actualiza_renta_IPC(mes, anyo_inicial, anyo_final, cantidad):
         if anyo_inicial < 2002 and anyo_final >= 2002:
             # Actualización de rentas de alquiler con el IPC entre un mes anterior a enero de 2002 y otro posterior
             # Indice LAU mes final
-            # El índice LAU se obtiene multiplicando el índice general del mes, en base 2021 (Llamando al método obtenerSerieINE con la serie IPC251852) por el coeficiente LAU (constante COEFICIENTES_LAU_BASE_2021) de ese mismo mes.
+            # El índice LAU se obtiene multiplicando el índice general del mes, en base 2021 (Llamando al método obtenerSerieINE
+            # con la serie IPC251852) por el coeficiente LAU (constante COEFICIENTES_LAU_BASE_2021) de ese mismo mes.
             # NOTA: El cociente de índices se deberá redondear a 3 decimales antes de multiplicarlo por la renta inicial
             dividendo = round(obtener_IPC(anyo_final, mes) * _COEFICIENTES_LAU_BASE_2021[mes - 1], 3)
             # print("Indice LAU: " + dividend)

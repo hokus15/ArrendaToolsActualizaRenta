@@ -29,11 +29,13 @@ def obtener_serie_INE(fechaInicio, fechaFin, serie):
     url = f'https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/{serie}?date={anyoInicial}{mesInicial}{diaInicial}:{anyoFinal}{mesFinal}{diaFinal}'
     print(url)
     try:
-        res = requests.get(url)
+        res = requests.get(url, timeout=30)
         res.raise_for_status()
         # print(res.status_code)
         contenidos = res.text
         # print(contenidos)
+    except requests.exceptions.Timeout as err:
+        raise ConnectionError(err)
     except requests.exceptions.HTTPError as err:
         raise ConnectionError(err)
     return json.loads(contenidos)
