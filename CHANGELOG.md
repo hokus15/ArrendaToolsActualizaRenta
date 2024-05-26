@@ -2,6 +2,23 @@
 
 
 
+## v0.2.1 (2024-05-26)
+
+### Fix
+
+* fix(requests): bump requests and update README ([`80c7b89`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/80c7b89180d56c9019fb39319a09134c0068f455))
+
+### Unknown
+
+* Merge pull request #42 from hokus15/devel
+
+fix(requests): bump requests and update README ([`88e954e`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/88e954ec634346253556eefaf94163894e0974f3))
+
+* Merge pull request #40 from hokus15/dependabot/pip/requests-2.32.2
+
+build(deps): bump requests from 2.31.0 to 2.32.2 ([`a829156`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/a829156a3f0b8bd18856756912389302e1bc8ce8))
+
+
 ## v0.2.0 (2024-05-26)
 
 ### Build
@@ -95,6 +112,17 @@ Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`e48e4cc`](https://g
 * Merge pull request #41 from hokus15/devel
 
 feat(python-version): minimum python version is now 3.8 ([`d5b02f6`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/d5b02f67ebcc4cc550522109d5962098ba24eb26))
+
+* 
+
+---
+updated-dependencies:
+- dependency-name: requests
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`814bafd`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/814bafd962e3f15a94c7e9f24178c466feacc24f))
 
 * Merge pull request #38 from hokus15/dependabot/github_actions/python-semantic-release/python-semantic-release-9.7.3
 
