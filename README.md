@@ -21,7 +21,7 @@ Por tanto, se recomienda al usuario **revisar cuidadosamente la información gen
 
 ## Requisitos
 
-Este módulo requiere Python 3.7 o superior.
+Este módulo requiere Python 3.8 o superior.
 
 ## Uso
 
