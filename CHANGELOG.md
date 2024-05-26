@@ -2,6 +2,121 @@
 
 
 
+## v0.2.0 (2024-05-26)
+
+### Build
+
+* build(deps): bump python-semantic-release/python-semantic-release
+
+Bumps [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release) from 9.7.1 to 9.7.3.
+- [Release notes](https://github.com/python-semantic-release/python-semantic-release/releases)
+- [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.7.1...v9.7.3)
+
+---
+updated-dependencies:
+- dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`0907086`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/09070869a8185cd7681ce2d8221f390ce9556704))
+
+* build(deps): bump python-semantic-release/python-semantic-release
+
+Bumps [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release) from 9.5.0 to 9.7.1.
+- [Release notes](https://github.com/python-semantic-release/python-semantic-release/releases)
+- [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.5.0...v9.7.1)
+
+---
+updated-dependencies:
+- dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`936e2d0`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/936e2d01c3188b03f962394cfd949b6241f076e6))
+
+* build(deps): bump python-semantic-release/python-semantic-release
+
+Bumps [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release) from 9.4.1 to 9.5.0.
+- [Release notes](https://github.com/python-semantic-release/python-semantic-release/releases)
+- [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.4.1...v9.5.0)
+
+---
+updated-dependencies:
+- dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`e96dde3`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/e96dde3926029a544584993d7ca8618ee9e8e13b))
+
+* build(deps): bump python-semantic-release/python-semantic-release
+
+Bumps [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release) from 9.4.0 to 9.4.1.
+- [Release notes](https://github.com/python-semantic-release/python-semantic-release/releases)
+- [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.4.0...v9.4.1)
+
+---
+updated-dependencies:
+- dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`d693c3c`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/d693c3c7ca3ac80678ed762b7b990ef0fe9bbb5e))
+
+* build(deps): bump python-semantic-release/python-semantic-release
+
+Bumps [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release) from 9.3.1 to 9.4.0.
+- [Release notes](https://github.com/python-semantic-release/python-semantic-release/releases)
+- [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.3.1...v9.4.0)
+
+---
+updated-dependencies:
+- dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`e48e4cc`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/e48e4ccbf65f00298ea4b51f1dd8df0144c873c6))
+
+### Feature
+
+* feat(python-version): minimum python version is now 3.8 ([`90dda34`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/90dda347fe89a1734dc4f47e652558a5f2465023))
+
+### Unknown
+
+* Merge pull request #41 from hokus15/devel
+
+feat(python-version): minimum python version is now 3.8 ([`d5b02f6`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/d5b02f67ebcc4cc550522109d5962098ba24eb26))
+
+* Merge pull request #38 from hokus15/dependabot/github_actions/python-semantic-release/python-semantic-release-9.7.3
+
+build(deps): bump python-semantic-release/python-semantic-release from 9.7.1 to 9.7.3 ([`e534c77`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/e534c779b7342e85e720a42640b1234276b43d21))
+
+* Merge pull request #36 from hokus15/dependabot/github_actions/python-semantic-release/python-semantic-release-9.7.1
+
+build(deps): bump python-semantic-release/python-semantic-release from 9.5.0 to 9.7.1 ([`b03e0b4`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/b03e0b4b841e8cd0319b6b7f8e1e41536cdd8129))
+
+* Merge pull request #33 from hokus15/dependabot/github_actions/python-semantic-release/python-semantic-release-9.5.0
+
+build(deps): bump python-semantic-release/python-semantic-release from 9.4.1 to 9.5.0 ([`9c2281c`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/9c2281cd81464479f0d5a13fe04890eb90d95d9c))
+
+* Merge pull request #31 from hokus15/dependabot/github_actions/python-semantic-release/python-semantic-release-9.4.1
+
+build(deps): bump python-semantic-release/python-semantic-release from 9.4.0 to 9.4.1 ([`44b0d5b`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/44b0d5b89a30b7ce391a340343e0411ceee9ada7))
+
+* Merge pull request #30 from hokus15/dependabot/github_actions/python-semantic-release/python-semantic-release-9.4.0
+
+build(deps): bump python-semantic-release/python-semantic-release from 9.3.1 to 9.4.0 ([`a172045`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/a172045e2ee19131754fae296d46ce50532df55b))
+
+
 ## v0.1.7 (2024-03-25)
 
 ### Build
