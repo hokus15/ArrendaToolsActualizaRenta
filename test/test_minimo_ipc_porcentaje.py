@@ -4,15 +4,58 @@ from decimal import Decimal
 from arrendatools.actualiza_renta.factory import ActualizacionRentaFactory
 
 
-class TestActualizaRentaIPC(unittest.TestCase):
+class TestMinimoIPCPorcentaje(unittest.TestCase):
     def setUp(self):
-        self.actualizacion_renta = ActualizacionRentaFactory.crear("IPC")
+        self.actualizacion_renta = ActualizacionRentaFactory.crear(
+            "MinimoIPCPorcentaje"
+        )
 
-    def test_calcular_meses_posteriores_enero_2002(self):
-        # Caso Actualización de rentas de alquiler con el IPC entre dos meses posteriores a enero de 2002
-        # Se quiere actualizar una renta de 400€ con el IPC entre agosto de 2002 y agosto de 2003.
+    def test_calcular_same(self):
         resultado = self.actualizacion_renta.calcular(
             cantidad=Decimal("400.00"),
+            dato=Decimal("0.03"),
+            anyo_inicial=2002,
+            anyo_final=2003,
+            mes=8,
+        )
+        esperado = {
+            "cantidad": Decimal("400.00"),
+            "cantidad_actualizada": Decimal("412.00"),
+            "indice_inicial": Decimal("71.085"),
+            "indice_final": Decimal("73.213"),
+            "dato": Decimal("0.03"),
+            "mes": "agosto",
+            "anyo_inicial": 2002,
+            "anyo_final": 2003,
+            "tasa_variacion": Decimal("0.03"),
+        }
+        self.assertEqual(resultado, esperado)
+
+    def test_calcular_dato(self):
+        resultado = self.actualizacion_renta.calcular(
+            cantidad=Decimal("400.00"),
+            dato=Decimal("0.022"),
+            anyo_inicial=2002,
+            anyo_final=2003,
+            mes=8,
+        )
+        esperado = {
+            "cantidad": Decimal("400.00"),
+            "cantidad_actualizada": Decimal("408.80"),
+            "indice_inicial": Decimal("71.085"),
+            "indice_final": Decimal("73.213"),
+            "mes": "agosto",
+            "anyo_inicial": 2002,
+            "anyo_final": 2003,
+            "dato": Decimal("0.022"),
+            "tasa_variacion": Decimal("0.022"),
+        }
+        self.assertEqual(resultado, esperado)
+
+    def test_calcular_ipc(self):
+        resultado = self.actualizacion_renta.calcular(
+            cantidad=Decimal("400.00"),
+            dato=Decimal("0.055"),
             anyo_inicial=2002,
             anyo_final=2003,
             mes=8,
@@ -25,51 +68,8 @@ class TestActualizaRentaIPC(unittest.TestCase):
             "mes": "agosto",
             "anyo_inicial": 2002,
             "anyo_final": 2003,
-            "tasa_variacion": Decimal("0.03"),
-        }
-        self.assertEqual(resultado, esperado)
-
-    def test_calcular_entre_mes_anterior_2002_y_mes_posterior_enero_2002(
-        self,
-    ):
-        # Caso: Actualización de rentas de alquiler con el IPC entre un mes anterior a enero de 2002 y otro posterior
-        # Se quiere actualizar una renta con el IPC entre enero de 2001 y enero de 2002.
-        resultado = self.actualizacion_renta.calcular(
-            mes=1,
-            anyo_inicial=2001,
-            anyo_final=2002,
-            cantidad=Decimal("400.00"),
-        )
-        esperado = {
-            "cantidad": Decimal("400.00"),
-            "cantidad_actualizada": Decimal("412.40"),
-            "indice_inicial": Decimal("133.413"),
-            "indice_final": Decimal("137.484"),
-            "mes": "enero",
-            "anyo_inicial": 2001,
-            "anyo_final": 2002,
-            "tasa_variacion": Decimal("0.031"),
-        }
-        self.assertEqual(resultado, esperado)
-
-    def test_calcular_entre_meses_anteriores_enero_2002(self):
-        # Caso: Actualización de rentas de alquiler con el IPC entre dos meses anteriores a enero de 2002
-        # Se quiere actualizar una renta con el IPC entre agosto de 1999 y agosto de 2001
-        resultado = self.actualizacion_renta.calcular(
-            mes=8,
-            anyo_inicial=1999,
-            anyo_final=2001,
-            cantidad=Decimal("400.00"),
-        )
-        esperado = {
-            "cantidad": Decimal("400.00"),
-            "cantidad_actualizada": Decimal("429.6"),
-            "indice_inicial": Decimal("127.312"),
-            "indice_final": Decimal("136.745"),
-            "mes": "agosto",
-            "anyo_inicial": 1999,
-            "anyo_final": 2001,
-            "tasa_variacion": Decimal("0.074"),
+            "dato": Decimal("0.055"),
+            "tasa_variacion": Decimal("0.030"),
         }
         self.assertEqual(resultado, esperado)
 
@@ -78,6 +78,7 @@ class TestActualizaRentaIPC(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             self.actualizacion_renta.calcular(
                 mes=8,
+                dato=Decimal("0.05"),
                 anyo_inicial=1953,
                 anyo_final=2001,
                 cantidad=Decimal("400.00"),
@@ -92,6 +93,7 @@ class TestActualizaRentaIPC(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             self.actualizacion_renta.calcular(
                 mes=2,
+                dato=Decimal("0.05"),
                 anyo_inicial=1954,
                 anyo_final=2001,
                 cantidad=Decimal("400.00"),
@@ -108,6 +110,7 @@ class TestActualizaRentaIPC(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             self.actualizacion_renta.calcular(
                 mes=2,
+                dato=Decimal("0.05"),
                 anyo_inicial=2022,
                 anyo_final=anyo_siguiente,
                 cantidad=Decimal("400.00"),
@@ -121,6 +124,7 @@ class TestActualizaRentaIPC(unittest.TestCase):
         # Caso: Actualización de rentas de alquiler sin proporcionar el mes
         with self.assertRaises(ValueError) as context:
             self.actualizacion_renta.calcular(
+                dato=Decimal("0.05"),
                 anyo_inicial=2022,
                 anyo_final=2023,
                 cantidad=Decimal("400.00"),
@@ -132,6 +136,7 @@ class TestActualizaRentaIPC(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             self.actualizacion_renta.calcular(
                 mes=2,
+                dato=Decimal("0.05"),
                 anyo_final=2023,
                 cantidad=Decimal("400.00"),
             )
@@ -144,6 +149,7 @@ class TestActualizaRentaIPC(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             self.actualizacion_renta.calcular(
                 mes=2,
+                dato=Decimal("0.05"),
                 anyo_inicial=2022,
                 cantidad=Decimal("400.00"),
             )
@@ -156,6 +162,7 @@ class TestActualizaRentaIPC(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             self.actualizacion_renta.calcular(
                 mes=2,
+                dato=Decimal("0.05"),
                 anyo_inicial=1953,
                 anyo_final=2023,
                 cantidad=Decimal("400.00"),
@@ -163,6 +170,33 @@ class TestActualizaRentaIPC(unittest.TestCase):
         self.assertEqual(
             str(context.exception),
             "Sólo hay datos de IPC a partir de Marzo de 1954.",
+        )
+
+    def test_calcular_dato_invalido(self):
+        with self.assertRaises(ValueError) as context:
+            self.actualizacion_renta.calcular(
+                cantidad=Decimal("100.00"),
+                dato=Decimal("1.10"),
+                anyo_inicial=1954,
+                anyo_final=2001,
+                mes=8,
+            )
+        self.assertEqual(
+            str(context.exception),
+            "El dato debe ser un porcentaje entre -1 (-100%) y 1 (100%).",
+        )
+
+    def test_calcular_missing_dato(self):
+        with self.assertRaises(ValueError) as context:
+            self.actualizacion_renta.calcular(
+                cantidad=Decimal("100.00"),
+                anyo_inicial=1954,
+                anyo_final=2001,
+                mes=8,
+            )
+        self.assertEqual(
+            str(context.exception),
+            "Debes proporcionar el campo 'dato'.",
         )
 
 
