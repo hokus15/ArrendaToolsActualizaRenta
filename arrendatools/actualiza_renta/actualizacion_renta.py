@@ -16,7 +16,7 @@ class ActualizacionRenta(ABC):
         anyo_final: int = None,
     ) -> Dict[str, any]:
         """Calcula la actualización de la renta."""
-        pass
+        raise NotImplementedError
 
     def validar_datos(
         self,

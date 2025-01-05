@@ -25,11 +25,13 @@ El módulo utiliza una arquitectura basada en clases con un patrón Factory para
 1. **`ActualizacionRenta`**: Clase base abstracta que define la interfaz para las actualizaciones.
 2. **Factory**: Proporciona una forma dinámica de instanciar clases de actualización según el tipo requerido.
 3. **Implementaciones**:
+
     - `Porcentaje`
     - `CantidadFija`
     - `IPC`
     - `MinimoIPCPorcentaje`
     - `IRAV`
+
 4. **INE**: Clase que se conecta al INE para obtener los datos del IPC e IRAV.
 
 ## Requisitos
@@ -37,6 +39,7 @@ El módulo utiliza una arquitectura basada en clases con un patrón Factory para
 Este módulo requiere Python 3.8 o superior.
 
 ## Uso
+
 
 ### Parámetros de entrada
 `cantidad (Decimal)`: **Obligatorio**. La cantidad de la renta a actualizar.
