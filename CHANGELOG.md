@@ -1,6 +1,36 @@
 # CHANGELOG
 
 
+## v1.0.1 (2025-01-19)
+
+### Bug Fixes
+
+- **ipc**: Return cantidad with only 2 decimal values for ipc and minimo_ipc_porcentaje
+  ([`0f0679a`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/0f0679a763c0a4d3bf55c96413281537ebd118e6))
+
+### Build System
+
+- **deps**: Bump python-semantic-release/python-semantic-release
+  ([`c670f19`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/c670f19b1282cf3a96de08cd22204f5cfc8d31ca))
+
+Bumps
+  [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release)
+  from 9.15.2 to 9.16.1. - [Release
+  notes](https://github.com/python-semantic-release/python-semantic-release/releases) -
+  [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.md)
+  -
+  [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.15.2...v9.16.1)
+
+--- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v1.0.0 (2025-01-05)
 
 ### Build System
