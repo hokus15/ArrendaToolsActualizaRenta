@@ -16,7 +16,10 @@ class MinimoIPCPorcentaje(ActualizacionRenta):
         anyo_final: int = None,
     ) -> dict:
         self.validar_datos(cantidad, dato, mes, anyo_inicial, anyo_final)
-        cantidad = Decimal(cantidad)  # Convertir explícitamente a Decimal
+        # Convertir explícitamente a Decimal
+        cantidad = Decimal(cantidad).quantize(
+            Decimal("0.01"), rounding=ROUND_HALF_UP
+        )
         datos_ipc = IPC().calcular(
             cantidad=cantidad,
             mes=mes,
