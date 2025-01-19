@@ -738,7 +738,10 @@ class IPC(ActualizacionRenta):
         anyo_final: int = None,
     ) -> dict:
         self.validar_datos(cantidad, dato, mes, anyo_inicial, anyo_final)
-        cantidad = Decimal(cantidad)  # Convertir explícitamente a Decimal
+        # Convertir explícitamente a Decimal
+        cantidad = Decimal(cantidad).quantize(
+            Decimal("0.01"), rounding=ROUND_HALF_UP
+        )
         dividendo = Decimal(0)
         divisor = Decimal(0)
         try:
