@@ -40,7 +40,10 @@ class IRAV(ActualizacionRenta):
     ) -> dict:
         self.validar_datos(cantidad, dato, mes, anyo_inicial, anyo_final)
         try:
-            cantidad = Decimal(cantidad)  # Convertir explícitamente a Decimal
+            # Convertir explícitamente a Decimal y redondear a dos decimales
+            cantidad = Decimal(cantidad).quantize(
+                Decimal("0.01"), rounding=ROUND_HALF_UP
+            )
             tasa_variacion = self._obtener_IRAV(anyo_inicial, mes)
             if tasa_variacion is None or tasa_variacion.is_nan():
                 raise ValueError(
