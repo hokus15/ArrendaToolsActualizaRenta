@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import Decimal, ROUND_HALF_UP
 from arrendatools.actualiza_renta.actualizacion_renta import ActualizacionRenta
 
 
@@ -14,7 +14,10 @@ class CantidadFija(ActualizacionRenta):
         anyo_final: int = None,
     ) -> dict:
         self.validar_datos(cantidad, dato, mes, anyo_inicial, anyo_final)
-        cantidad = Decimal(cantidad)  # Convertir explícitamente a Decimal
+        # Convertir explícitamente a Decimal y redondear a dos decimales
+        cantidad = Decimal(cantidad).quantize(
+            Decimal("0.01"), rounding=ROUND_HALF_UP
+        )
         cantidad_actualizada = cantidad + Decimal(dato)
         result = {
             "cantidad": cantidad,
