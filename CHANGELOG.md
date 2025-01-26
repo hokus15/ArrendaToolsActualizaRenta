@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.0.3 (2025-01-26)
+
+### Bug Fixes
+
+- **cantidad**: Return cantidad with only 2 decimal values for all tipos
+  ([`d219db0`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/d219db065eb30477dd44a84794ccf0d7abd71d99))
+
+
 ## v1.0.2 (2025-01-25)
 
 ### Bug Fixes
