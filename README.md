@@ -48,7 +48,7 @@ Este módulo requiere Python 3.8 o superior.
 
 `anyo_inicial (int)`: Obligatorio para los tipos de actualización **IPC**, **IRAV** y **MinimoIPCPorcentaje**. El año inicial de referencia para el cálculo.
 
-`anyo_final (int)`: Obligatorio para los tipos de actualización **IPC**, **IRAV** y **MinimoIPCPorcentaje**. El año final de referencia para el cálculo.
+`anyo_final (int)`: Obligatorio para los tipos de actualización **IPC** y **MinimoIPCPorcentaje**. El año final de referencia para el cálculo.
 
 `dato (Decimal)`: Obligatorio para los tipos de actualización **Porcentaje**, **CantidadFija** y **MinimoIPCPorcentaje**. Dato adicional para hacer los cálculos, por ejemplo en la actualización por porcentaje es el porcentaje de actualización (-1 -> -100% y 1 -> 100%). En la actualización por cantidad fija es la cantidad a actualizar.
 
