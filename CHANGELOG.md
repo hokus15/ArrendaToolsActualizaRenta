@@ -1,6 +1,116 @@
 # CHANGELOG
 
 
+## v1.0.4 (2025-05-09)
+
+### Bug Fixes
+
+- **irav**: Remove print line
+  ([`4ae31ef`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/4ae31ef276552e514a71561b873ddaa0e90b95dd))
+
+### Build System
+
+- **deps**: Bump python-semantic-release/python-semantic-release
+  ([`fce78d6`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/fce78d67ad734c4520cb5ca09b285219fac8e199))
+
+Bumps
+  [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release)
+  from 9.21.0 to 9.21.1. - [Release
+  notes](https://github.com/python-semantic-release/python-semantic-release/releases) -
+  [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.rst)
+  -
+  [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.21.0...v9.21.1)
+
+--- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
+  dependency-version: 9.21.1
+
+dependency-type: direct:production
+
+update-type: version-update:semver-patch ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Bump python-semantic-release/python-semantic-release
+  ([`b6b34a5`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/b6b34a5360e1169627ff4bdf2718943a12067bbc))
+
+Bumps
+  [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release)
+  from 9.20.0 to 9.21.0. - [Release
+  notes](https://github.com/python-semantic-release/python-semantic-release/releases) -
+  [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.rst)
+  -
+  [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.20.0...v9.21.0)
+
+--- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+
+update-type: version-update:semver-minor ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Bump python-semantic-release/python-semantic-release
+  ([`5189a5a`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/5189a5ad80c04a8a111bed04d61631e804fee02a))
+
+Bumps
+  [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release)
+  from 9.19.1 to 9.20.0. - [Release
+  notes](https://github.com/python-semantic-release/python-semantic-release/releases) -
+  [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.rst)
+  -
+  [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.19.1...v9.20.0)
+
+--- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+
+update-type: version-update:semver-minor ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Bump python-semantic-release/python-semantic-release
+  ([`f71d2f0`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/f71d2f07754c50fb94d345adbcac5a34db1f3587))
+
+Bumps
+  [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release)
+  from 9.19.0 to 9.19.1. - [Release
+  notes](https://github.com/python-semantic-release/python-semantic-release/releases) -
+  [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.rst)
+  -
+  [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.19.0...v9.19.1)
+
+--- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+
+update-type: version-update:semver-patch ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Bump python-semantic-release/python-semantic-release
+  ([`3754720`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/3754720f9f44600bd925523859ff2a042c94cded))
+
+Bumps
+  [python-semantic-release/python-semantic-release](https://github.com/python-semantic-release/python-semantic-release)
+  from 9.16.1 to 9.19.0. - [Release
+  notes](https://github.com/python-semantic-release/python-semantic-release/releases) -
+  [Changelog](https://github.com/python-semantic-release/python-semantic-release/blob/master/CHANGELOG.rst)
+  -
+  [Commits](https://github.com/python-semantic-release/python-semantic-release/compare/v9.16.1...v9.19.0)
+
+--- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
+  dependency-type: direct:production
+
+update-type: version-update:semver-minor ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+### Documentation
+
+- **irav**: Fix irav documentation
+  ([`9095b1e`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/9095b1ebb48a4170feb8b1253673e852153bfbf9))
+
+- **irav**: Fix wrong irav doc
+  ([`882df81`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/882df8130446a0f3019efe3d6bc5ae98fa75ed48))
+
+
 ## v1.0.3 (2025-01-26)
 
 ### Bug Fixes
@@ -40,9 +150,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -65,9 +173,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -85,9 +191,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -105,9 +209,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -125,9 +227,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -145,9 +245,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -165,9 +263,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -185,9 +281,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -205,9 +299,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -225,9 +317,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -245,9 +335,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -265,9 +353,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -285,9 +371,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -301,9 +385,7 @@ Bumps [requests](https://github.com/psf/requests) from 2.32.2 to 2.32.3. - [Rele
 
 --- updated-dependencies: - dependency-name: requests dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -323,7 +405,7 @@ The module uses a class-based architecture with a Factory pattern for the dynami
 BREAKING CHANGE: The module uses a class-based architecture with a Factory pattern for the dynamic
   creation of different update methods.
 
-### BREAKING CHANGES
+### Breaking Changes
 
 - **refactor**: The module uses a class-based architecture with a Factory pattern for the dynamic
   creation of different update methods.
@@ -355,9 +437,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -375,9 +455,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -395,9 +473,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -415,9 +491,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -435,9 +509,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -470,9 +542,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -490,9 +560,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -510,9 +578,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -530,9 +596,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -550,9 +614,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -570,9 +632,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -590,9 +650,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -610,9 +668,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -630,9 +686,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -650,9 +704,7 @@ Bumps
 --- updated-dependencies: - dependency-name: python-semantic-release/python-semantic-release
   dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -745,9 +797,7 @@ Bumps [actions/setup-python](https://github.com/actions/setup-python) from 4 to 
 
 --- updated-dependencies: - dependency-name: actions/setup-python dependency-type: direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -779,9 +829,7 @@ Bumps [actions/checkout](https://github.com/actions/checkout) from 3 to 4. - [Re
 
 --- updated-dependencies: - dependency-name: actions/checkout dependency-type: direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
