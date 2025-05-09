@@ -52,7 +52,6 @@ class IRAV(ActualizacionRenta):
             cantidad_actualizada = (
                 cantidad * (Decimal("1") + tasa_variacion)
             ).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
-            print(cantidad_actualizada)
         except ConnectionError as err:
             print(err)
             raise
