@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v1.0.5 (2025-05-15)
+
+### Bug Fixes
+
+- **irav**: When no info got from INE return ValueError
+  ([`95ddd07`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/95ddd0725ed3276fd3bdc9fd62c29bd7078db6a9))
+
+### Refactoring
+
+- **type-check**: Fix some type checking warnings
+  ([`a8f8f86`](https://github.com/hokus15/ArrendaToolsActualizaRenta/commit/a8f8f86c9f5fa171e620c8c6da8d4eaaafdd791f))
+
+
 ## v1.0.4 (2025-05-09)
 
 ### Bug Fixes
