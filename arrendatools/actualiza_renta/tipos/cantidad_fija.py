@@ -1,3 +1,4 @@
+from typing import Optional
 from decimal import Decimal, ROUND_HALF_UP
 from arrendatools.actualiza_renta.actualizacion_renta import ActualizacionRenta
 
@@ -8,17 +9,17 @@ class CantidadFija(ActualizacionRenta):
     def calcular(
         self,
         cantidad: Decimal,
-        dato: Decimal = None,
-        mes: int = None,
-        anyo_inicial: int = None,
-        anyo_final: int = None,
+        dato: Optional[Decimal] = None,
+        mes: Optional[int] = None,
+        anyo_inicial: Optional[int] = None,
+        anyo_final: Optional[int] = None,
     ) -> dict:
         self.validar_datos(cantidad, dato, mes, anyo_inicial, anyo_final)
         # Convertir explícitamente a Decimal y redondear a dos decimales
         cantidad = Decimal(cantidad).quantize(
             Decimal("0.01"), rounding=ROUND_HALF_UP
         )
-        cantidad_actualizada = cantidad + Decimal(dato)
+        cantidad_actualizada = cantidad + Decimal(dato)  # type: ignore
         result = {
             "cantidad": cantidad,
             "dato": dato,
@@ -29,10 +30,10 @@ class CantidadFija(ActualizacionRenta):
     def validar_datos(
         self,
         cantidad: Decimal,
-        dato: Decimal = None,
-        mes: int = None,
-        anyo_inicial: int = None,
-        anyo_final: int = None,
+        dato: Optional[Decimal] = None,
+        mes: Optional[int] = None,
+        anyo_inicial: Optional[int] = None,
+        anyo_final: Optional[int] = None,
     ) -> None:
         """Valida los datos de entrada."""
         super().validar_datos(cantidad, dato, mes, anyo_inicial, anyo_final)

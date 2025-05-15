@@ -1,3 +1,4 @@
+from typing import Optional, Any
 from abc import ABC, abstractmethod
 from decimal import Decimal
 from typing import Dict
@@ -10,21 +11,21 @@ class ActualizacionRenta(ABC):
     def calcular(
         self,
         cantidad: Decimal,
-        dato: Decimal = None,
-        mes: int = None,
-        anyo_inicial: int = None,
-        anyo_final: int = None,
-    ) -> Dict[str, any]:
+        dato: Optional[Decimal] = None,
+        mes: Optional[int] = None,
+        anyo_inicial: Optional[int] = None,
+        anyo_final: Optional[int] = None,
+    ) -> Dict[str, Any]:
         """Calcula la actualización de la renta."""
         raise NotImplementedError
 
     def validar_datos(
         self,
         cantidad: Decimal,
-        dato: Decimal = None,
-        mes: int = None,
-        anyo_inicial: int = None,
-        anyo_final: int = None,
+        dato: Optional[Decimal] = None,
+        mes: Optional[int] = None,
+        anyo_inicial: Optional[int] = None,
+        anyo_final: Optional[int] = None,
     ) -> None:
         """Valida los datos de entrada."""
         if not isinstance(cantidad, Decimal):
