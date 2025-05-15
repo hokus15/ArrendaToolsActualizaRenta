@@ -1,3 +1,4 @@
+from typing import Optional
 from decimal import Decimal, ROUND_HALF_UP
 from arrendatools.actualiza_renta.utils import FechaUtils
 from arrendatools.actualiza_renta.actualizacion_renta import ActualizacionRenta
@@ -10,10 +11,10 @@ class MinimoIPCPorcentaje(ActualizacionRenta):
     def calcular(
         self,
         cantidad: Decimal,
-        dato: Decimal = None,
-        mes: int = None,
-        anyo_inicial: int = None,
-        anyo_final: int = None,
+        dato: Optional[Decimal] = None,
+        mes: Optional[int] = None,
+        anyo_inicial: Optional[int] = None,
+        anyo_final: Optional[int] = None,
     ) -> dict:
         self.validar_datos(cantidad, dato, mes, anyo_inicial, anyo_final)
         # Convertir explícitamente a Decimal y redondear a dos decimales
@@ -28,14 +29,14 @@ class MinimoIPCPorcentaje(ActualizacionRenta):
         )
         ipc_variacion = datos_ipc["tasa_variacion"]
 
-        tasa_variacion = min(ipc_variacion, dato)
+        tasa_variacion = min(ipc_variacion, dato)  # type: ignore
         cantidad_actualizada = (
             cantidad + (cantidad * Decimal(tasa_variacion))
         ).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
 
         return {
             "cantidad": cantidad,
-            "mes": FechaUtils.mes_en_espanol(mes),
+            "mes": FechaUtils.mes_en_espanol(mes),  # type: ignore
             "dato": dato,
             "anyo_inicial": anyo_inicial,
             "anyo_final": anyo_final,
@@ -48,10 +49,10 @@ class MinimoIPCPorcentaje(ActualizacionRenta):
     def validar_datos(
         self,
         cantidad: Decimal,
-        dato: Decimal = None,
-        mes: int = None,
-        anyo_inicial: int = None,
-        anyo_final: int = None,
+        dato: Optional[Decimal] = None,
+        mes: Optional[int] = None,
+        anyo_inicial: Optional[int] = None,
+        anyo_final: Optional[int] = None,
     ) -> None:
         """Valida los datos de entrada."""
         super().validar_datos(cantidad, dato, mes, anyo_inicial, anyo_final)

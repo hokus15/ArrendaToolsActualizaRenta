@@ -1,3 +1,4 @@
+from typing import Optional
 from decimal import Decimal, ROUND_HALF_UP
 from datetime import date
 from arrendatools.actualiza_renta.utils import FechaUtils
@@ -711,7 +712,7 @@ class IPC(ActualizacionRenta):
         ],
     }
 
-    def _obtener_IPC(self, año: int, mes: int) -> Decimal:
+    def _obtener_IPC(self, anyo: int, mes: int) -> Decimal:
         """
         Obtiene el IPC del INE para el año y mes indicado.
 
@@ -722,20 +723,24 @@ class IPC(ActualizacionRenta):
         :return: Se conecta a la web del INE y consulta el IPC Base 2021 para el mes y año indicados.
         :rtype: Decimal
         """
-        fecha = date(año, mes, 1)
+        fecha = date(anyo, mes, 1)
         json = INE.obtener_datos_serie(fecha, fecha, self._SERIE_IPC)
         valor = None
         if len(json["Data"]) > 0:
             valor = Decimal(json["Data"][0]["Valor"])
-        return valor
+            return valor
+        else:
+            raise ValueError(
+                f"Renta no actualizada: No he podido recuperar los datos del IPC para {FechaUtils.mes_en_espanol(mes)} de {anyo}."
+            )
 
     def calcular(
         self,
-        cantidad: float,  # Puede ingresarse como float, pero lo convertimos a Decimal
-        dato: float = None,
-        mes: int = None,
-        anyo_inicial: int = None,
-        anyo_final: int = None,
+        cantidad: Decimal,
+        dato: Optional[Decimal] = None,
+        mes: Optional[int] = None,
+        anyo_inicial: Optional[int] = None,
+        anyo_final: Optional[int] = None,
     ) -> dict:
         self.validar_datos(cantidad, dato, mes, anyo_inicial, anyo_final)
         # Convertir explícitamente a Decimal y redondear a dos decimales
@@ -745,11 +750,11 @@ class IPC(ActualizacionRenta):
         dividendo = Decimal(0)
         divisor = Decimal(0)
         try:
-            if anyo_inicial < 2002 and anyo_final >= 2002:
-                indice_ipc = self._obtener_IPC(anyo_final, mes)
+            if anyo_inicial < 2002 and anyo_final >= 2002:  # type: ignore
+                indice_ipc = self._obtener_IPC(anyo_final, mes)  # type: ignore
                 if indice_ipc is None or indice_ipc.is_nan():
                     raise ValueError(
-                        f"Renta no actualizada: No he podido recuperar los datos del IPC para {FechaUtils.mes_en_espanol(mes)} de {anyo_final}."
+                        f"Renta no actualizada: No he podido recuperar los datos del IPC para {FechaUtils.mes_en_espanol(mes)} de {anyo_final}."  # type: ignore
                     )
                 # Actualización de rentas de alquiler con el IPC entre un mes anterior a enero de 2002 y otro posterior
                 # Indice LAU mes final
@@ -758,39 +763,39 @@ class IPC(ActualizacionRenta):
                 # NOTA: El cociente de índices se deberá redondear a 3 decimales antes de multiplicarlo por la renta inicial
                 dividendo = (
                     indice_ipc
-                    * Decimal(self._COEFICIENTES_LAU_BASE_2021[mes - 1])
+                    * Decimal(self._COEFICIENTES_LAU_BASE_2021[mes - 1])  # type: ignore
                 ).quantize(Decimal("0.001"), rounding=ROUND_HALF_UP)
 
                 divisor = Decimal(
-                    self._TABLA_IPC_BASE_1992[anyo_inicial][mes - 1]
+                    self._TABLA_IPC_BASE_1992[anyo_inicial][mes - 1]  # type: ignore
                 ).quantize(Decimal("0.001"), rounding=ROUND_HALF_UP)
 
-            elif anyo_inicial < 2002 and anyo_final < 2002:
+            elif anyo_inicial < 2002 and anyo_final < 2002:  # type: ignore
                 # Actualización de rentas de alquiler con el IPC entre dos meses anteriores a enero de 2002
                 # Se obtiene de la tabla TABLA_IPC_BASE_1992
                 dividendo = Decimal(
-                    self._TABLA_IPC_BASE_1992[anyo_final][mes - 1]
+                    self._TABLA_IPC_BASE_1992[anyo_final][mes - 1]  # type: ignore
                 ).quantize(Decimal("0.001"), rounding=ROUND_HALF_UP)
 
                 divisor = Decimal(
-                    self._TABLA_IPC_BASE_1992[anyo_inicial][mes - 1]
+                    self._TABLA_IPC_BASE_1992[anyo_inicial][mes - 1]  # type: ignore
                 ).quantize(Decimal("0.001"), rounding=ROUND_HALF_UP)
 
             else:
-                indice_ipc = self._obtener_IPC(anyo_final, mes)
+                indice_ipc = self._obtener_IPC(anyo_final, mes)  # type: ignore
                 if indice_ipc is None or indice_ipc.is_nan():
                     raise ValueError(
-                        f"Renta no actualizada: No he podido recuperar los datos del IPC para {FechaUtils.mes_en_espanol(mes)} de {anyo_final}."
+                        f"Renta no actualizada: No he podido recuperar los datos del IPC para {FechaUtils.mes_en_espanol(mes)} de {anyo_final}."  # type: ignore
                     )
                 # Actualización de rentas de alquiler con el IPC entre dos meses posteriores a enero de 2002
                 # IPC mes final
                 dividendo = indice_ipc.quantize(
                     Decimal("0.001"), rounding=ROUND_HALF_UP
                 )
-                indice_ipc = self._obtener_IPC(anyo_inicial, mes)
+                indice_ipc = self._obtener_IPC(anyo_inicial, mes)  # type: ignore
                 if indice_ipc is None or indice_ipc.is_nan():
                     raise ValueError(
-                        f"Renta no actualizada: No he podido recuperar los datos del IPC para {FechaUtils.mes_en_espanol(mes)} de {anyo_inicial}."
+                        f"Renta no actualizada: No he podido recuperar los datos del IPC para {FechaUtils.mes_en_espanol(mes)} de {anyo_inicial}."  # type: ignore
                     )
                 # IPC mes inicial
                 divisor = indice_ipc.quantize(
@@ -813,7 +818,7 @@ class IPC(ActualizacionRenta):
 
         return {
             "cantidad": cantidad,
-            "mes": FechaUtils.mes_en_espanol(mes),
+            "mes": FechaUtils.mes_en_espanol(mes),  # type: ignore
             "anyo_inicial": anyo_inicial,
             "anyo_final": anyo_final,
             "indice_inicial": divisor,
@@ -825,10 +830,10 @@ class IPC(ActualizacionRenta):
     def validar_datos(
         self,
         cantidad: Decimal,
-        dato: Decimal = None,
-        mes: int = None,
-        anyo_inicial: int = None,
-        anyo_final: int = None,
+        dato: Optional[Decimal] = None,
+        mes: Optional[int] = None,
+        anyo_inicial: Optional[int] = None,
+        anyo_final: Optional[int] = None,
     ) -> None:
         """Valida los datos de entrada."""
         super().validar_datos(cantidad, dato, mes, anyo_inicial, anyo_final)
