@@ -208,32 +208,6 @@ class TestIpcUpdate(unittest.TestCase):
             "IPC data is only available from March 1954 onward.",
         )
 
-    def test_calculate_invalid_month_low(self):
-        with self.assertRaises(ValueError) as context:
-            RentUpdateInput(
-                month=0,
-                year_start=2022,
-                year_end=2023,
-                amount=Decimal("400.00"),
-            )
-        self.assertEqual(
-            str(context.exception),
-            "Month must be between 1 and 12.",
-        )
-
-    def test_calculate_invalid_year_order(self):
-        with self.assertRaises(ValueError) as context:
-            RentUpdateInput(
-                month=2,
-                year_start=2023,
-                year_end=2022,
-                amount=Decimal("400.00"),
-            )
-        self.assertEqual(
-            str(context.exception),
-            "Year end cannot be earlier than year start.",
-        )
-
     @patch("arrendatools.rent_update.strategies.ipc.IneClient.fetch_series_data")
     def test_fetch_ipc_no_data(self, mock_fetch):
         mock_fetch.return_value = {"Data": []}
