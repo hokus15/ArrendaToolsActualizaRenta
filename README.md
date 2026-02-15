@@ -11,7 +11,7 @@ Módulo de python para calcular la actualización de rentas de alquiler en Espa�
 - IRAV (Índice de Rentas de Alquiler de Viviendas)
 - Combinación mínima entre IPC y porcentaje
 
-El cálculo usando el IPC (LAU), se basa según lo descrito en la página web del [Instituto Nacional de Estadística (INE)](https://www.ine.es/ss/Satellite?c=Page&cid=1254735905720&pagename=ProductosYServicios%2FPYSLayout&L=0&p=1254735893337). Es equivalente a utilizar la calculadora publicada por el INE en el siguiente enlace [Actualización de rentas con el IPC general (sistema IPC base 2021) para periodos anuales completos](https://www.ine.es/calcula).
+El cálculo usando el IPC (LAU), se basa según lo descrito en la página web del [Instituto Nacional de Estadística (INE)](https://www.ine.es/dyngs/IPC/es/index.htm?cid=1436). Es equivalente a utilizar la calculadora publicada por el INE en el siguiente enlace [Actualización de rentas con el IPC general (sistema IPC base 2021) para periodos anuales completos](https://www.ine.es/calcula).
 
 ## Limitaciones
 
