@@ -118,7 +118,7 @@ class TestMinIpcOrPercentageUpdate(unittest.TestCase):
     def test_calculate_future(self):
         today = date.today()  # Obtiene la fecha actual
         next_year = today.year + 1  # Año que viene
-        # Caso: Actualización de rentas de alquiler de un periodo en el que todavía no se ha publacado los datos del IPC
+        # Caso: Actualización de rentas de alquiler de un periodo en el que todavía no se ha publicado los datos del IPC
         with self.assertRaises(ValueError) as context:
             self.rent_update.calculate(
                 RentUpdateInput(
