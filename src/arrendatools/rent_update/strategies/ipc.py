@@ -1,3 +1,4 @@
+import logging
 from datetime import date
 from decimal import ROUND_HALF_UP, Decimal
 
@@ -95,7 +96,7 @@ class IpcUpdate(RentUpdateMethod):
                     )
                 divisor = index_ipc.quantize(Decimal("0.001"), rounding=ROUND_HALF_UP)
         except ConnectionError as err:
-            print(err)
+            logging.getLogger(__name__).error("INE IPC fetch failed: %s", err)
             raise
 
         # INE rounding: compute (dividend / divisor - 1) and round to 3 decimals.
