@@ -1,6 +1,7 @@
 import unittest
 from datetime import date
 from decimal import Decimal
+from unittest.mock import patch
 
 from arrendatools.rent_update.base import RentUpdateInput, RentUpdateResult
 from arrendatools.rent_update.factory import RentUpdateFactory
@@ -205,6 +206,117 @@ class TestIpcUpdate(unittest.TestCase):
         self.assertEqual(
             str(context.exception),
             "IPC data is only available from March 1954 onward.",
+        )
+
+    def test_calculate_invalid_month_low(self):
+        with self.assertRaises(ValueError) as context:
+            RentUpdateInput(
+                month=0,
+                year_start=2022,
+                year_end=2023,
+                amount=Decimal("400.00"),
+            )
+        self.assertEqual(
+            str(context.exception),
+            "Month must be between 1 and 12.",
+        )
+
+    def test_calculate_invalid_year_order(self):
+        with self.assertRaises(ValueError) as context:
+            RentUpdateInput(
+                month=2,
+                year_start=2023,
+                year_end=2022,
+                amount=Decimal("400.00"),
+            )
+        self.assertEqual(
+            str(context.exception),
+            "Year end cannot be earlier than year start.",
+        )
+
+    @patch("arrendatools.rent_update.strategies.ipc.IneClient.fetch_series_data")
+    def test_fetch_ipc_no_data(self, mock_fetch):
+        mock_fetch.return_value = {"Data": []}
+
+        with self.assertRaises(ValueError) as context:
+            self.rent_update._fetch_ipc(2024, 1)
+        self.assertEqual(
+            str(context.exception),
+            "Rent not updated: Could not fetch IPC data for enero 2024.",
+        )
+
+    @patch("arrendatools.rent_update.strategies.ipc.IpcUpdate._fetch_ipc")
+    def test_calculate_logs_connection_error(self, mock_fetch):
+        mock_fetch.side_effect = ConnectionError("Boom")
+
+        with self.assertLogs(
+            "arrendatools.rent_update.strategies.ipc", level="ERROR"
+        ) as logs:
+            with self.assertRaises(ConnectionError):
+                self.rent_update.calculate(
+                    RentUpdateInput(
+                        amount=Decimal("400.00"),
+                        year_start=2002,
+                        year_end=2003,
+                        month=8,
+                    )
+                )
+        self.assertTrue(
+            any("INE IPC fetch failed: Boom" in message for message in logs.output)
+        )
+
+    @patch("arrendatools.rent_update.strategies.ipc.IpcUpdate._fetch_ipc")
+    def test_calculate_cross_base_nan_ipc_raises_value_error(self, mock_fetch):
+        mock_fetch.return_value = Decimal("NaN")
+
+        with self.assertRaises(ValueError) as context:
+            self.rent_update.calculate(
+                RentUpdateInput(
+                    month=1,
+                    year_start=2001,
+                    year_end=2002,
+                    amount=Decimal("400.00"),
+                )
+            )
+        self.assertEqual(
+            str(context.exception),
+            "Rent not updated: Could not fetch IPC data for enero 2002.",
+        )
+
+    @patch("arrendatools.rent_update.strategies.ipc.IpcUpdate._fetch_ipc")
+    def test_calculate_2002_plus_nan_start_ipc_raises_value_error(self, mock_fetch):
+        mock_fetch.side_effect = [Decimal("110.0"), Decimal("NaN")]
+
+        with self.assertRaises(ValueError) as context:
+            self.rent_update.calculate(
+                RentUpdateInput(
+                    amount=Decimal("400.00"),
+                    year_start=2002,
+                    year_end=2003,
+                    month=8,
+                )
+            )
+        self.assertEqual(
+            str(context.exception),
+            "Rent not updated: Could not fetch IPC data for agosto 2002.",
+        )
+
+    @patch("arrendatools.rent_update.strategies.ipc.IpcUpdate._fetch_ipc")
+    def test_calculate_2002_plus_nan_end_ipc_raises_value_error(self, mock_fetch):
+        mock_fetch.return_value = Decimal("NaN")
+
+        with self.assertRaises(ValueError) as context:
+            self.rent_update.calculate(
+                RentUpdateInput(
+                    amount=Decimal("400.00"),
+                    year_start=2002,
+                    year_end=2003,
+                    month=8,
+                )
+            )
+        self.assertEqual(
+            str(context.exception),
+            "Rent not updated: Could not fetch IPC data for agosto 2003.",
         )
 
 
