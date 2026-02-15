@@ -30,6 +30,7 @@ El modulo utiliza una arquitectura basada en clases con un patron Factory para l
     - `FixedAmountUpdate` (`fixed_amount`)
     - `IpcUpdate` (`ipc`)
     - `MinIpcOrPercentageUpdate` (`min_ipc_or_percentage`)
+    - `IpcThenPercentageUpdate` (`ipc_then_percentage`)
     - `IravUpdate` (`irav`)
 
 4. **`IneClient`**: Clase que se conecta al INE para obtener los datos del IPC e IRAV.

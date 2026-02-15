@@ -30,6 +30,7 @@ fixed_amount = "arrendatools.rent_update.strategies.fixed_amount:FixedAmountUpda
 ipc = "arrendatools.rent_update.strategies.ipc:IpcUpdate"
 irav = "arrendatools.rent_update.strategies.irav:IravUpdate"
 min_ipc_or_percentage = "arrendatools.rent_update.strategies.min_ipc_or_percentage:MinIpcOrPercentageUpdate"
+ipc_then_percentage = "arrendatools.rent_update.strategies.ipc_then_percentage:IpcThenPercentageUpdate"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
