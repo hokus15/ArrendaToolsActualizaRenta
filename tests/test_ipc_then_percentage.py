@@ -22,8 +22,8 @@ class TestIpcThenPercentageUpdate(unittest.TestCase):
         expected = RentUpdateResult(
             amount=Decimal("400.00"),
             updated_amount=Decimal("432.60"),
-            index_start=Decimal("71.085"),
-            index_end=Decimal("73.213"),
+            index_start=Decimal("60.030"),
+            index_end=Decimal("61.827"),
             month="agosto",
             year_start=2002,
             year_end=2003,
@@ -45,8 +45,8 @@ class TestIpcThenPercentageUpdate(unittest.TestCase):
         expected = RentUpdateResult(
             amount=Decimal("400.00"),
             updated_amount=Decimal("391.40"),
-            index_start=Decimal("71.085"),
-            index_end=Decimal("73.213"),
+            index_start=Decimal("60.030"),
+            index_end=Decimal("61.827"),
             month="agosto",
             year_start=2002,
             year_end=2003,
@@ -68,8 +68,8 @@ class TestIpcThenPercentageUpdate(unittest.TestCase):
         expected = RentUpdateResult(
             amount=Decimal("400.00"),
             updated_amount=Decimal("0.00"),
-            index_start=Decimal("71.085"),
-            index_end=Decimal("73.213"),
+            index_start=Decimal("60.030"),
+            index_end=Decimal("61.827"),
             month="agosto",
             year_start=2002,
             year_end=2003,

@@ -1,5 +1,5 @@
 from datetime import date
-from decimal import Decimal, ROUND_HALF_UP
+from decimal import ROUND_HALF_UP, Decimal
 
 from arrendatools.rent_update.base import (
     RentUpdateInput,
@@ -17,15 +17,13 @@ from arrendatools.rent_update.strategies.ipc_data import (
 class IpcUpdate(RentUpdateMethod):
     """Actualizacion de renta basada en IPC."""
 
-    # IPC series: base 2021.
-    _SERIES_IPC = "IPC251852"
+    # IPC series: base 2025.
+    _SERIES_IPC = "IPC290751"
 
     def _fetch_ipc(self, year: int, month: int) -> Decimal:
         """Obtiene el IPC del INE para el ano y mes indicado."""
         query_date = date(year, month, 1)
-        payload = IneClient.fetch_series_data(
-            query_date, query_date, self._SERIES_IPC
-        )
+        payload = IneClient.fetch_series_data(query_date, query_date, self._SERIES_IPC)
         if len(payload.get("Data", [])) > 0:
             return Decimal(payload["Data"][0]["Valor"])
         raise ValueError(
@@ -46,9 +44,7 @@ class IpcUpdate(RentUpdateMethod):
         if (inputs.year_start < 1954) or (
             inputs.year_start == 1954 and inputs.month < 3
         ):
-            raise ValueError(
-                "IPC data is only available from March 1954 onward."
-            )
+            raise ValueError("IPC data is only available from March 1954 onward.")
 
         amount = Decimal(inputs.amount).quantize(
             Decimal("0.01"), rounding=ROUND_HALF_UP
@@ -65,8 +61,7 @@ class IpcUpdate(RentUpdateMethod):
                     )
                 # Cross-base update: before 2002 to 2002+.
                 dividend = (
-                    index_ipc
-                    * Decimal(COEFFICIENTS_LAU_BASE_2021[inputs.month - 1])
+                    index_ipc * Decimal(COEFFICIENTS_LAU_BASE_2021[inputs.month - 1])
                 ).quantize(Decimal("0.001"), rounding=ROUND_HALF_UP)
 
                 divisor = Decimal(
@@ -91,30 +86,26 @@ class IpcUpdate(RentUpdateMethod):
                         "Rent not updated: Could not fetch IPC data for "
                         f"{DateUtils.month_name_es(inputs.month)} {inputs.year_end}."
                     )
-                dividend = index_ipc.quantize(
-                    Decimal("0.001"), rounding=ROUND_HALF_UP
-                )
+                dividend = index_ipc.quantize(Decimal("0.001"), rounding=ROUND_HALF_UP)
                 index_ipc = self._fetch_ipc(inputs.year_start, inputs.month)
                 if index_ipc is None or index_ipc.is_nan():
                     raise ValueError(
                         "Rent not updated: Could not fetch IPC data for "
                         f"{DateUtils.month_name_es(inputs.month)} {inputs.year_start}."
                     )
-                divisor = index_ipc.quantize(
-                    Decimal("0.001"), rounding=ROUND_HALF_UP
-                )
+                divisor = index_ipc.quantize(Decimal("0.001"), rounding=ROUND_HALF_UP)
         except ConnectionError as err:
             print(err)
             raise
 
         # INE rounding: compute (dividend / divisor - 1) and round to 3 decimals.
-        variation_rate = (((dividend / divisor) - Decimal(1))).quantize(
+        variation_rate = ((dividend / divisor) - Decimal(1)).quantize(
             Decimal("0.001"), rounding=ROUND_HALF_UP
         )
 
-        updated_amount = (
-            amount + (amount * variation_rate)
-        ).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+        updated_amount = (amount + (amount * variation_rate)).quantize(
+            Decimal("0.01"), rounding=ROUND_HALF_UP
+        )
 
         return RentUpdateResult(
             amount=amount,

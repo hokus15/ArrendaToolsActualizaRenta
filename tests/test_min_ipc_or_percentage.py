@@ -8,9 +8,7 @@ from arrendatools.rent_update.factory import RentUpdateFactory
 
 class TestMinIpcOrPercentageUpdate(unittest.TestCase):
     def setUp(self):
-        self.rent_update = RentUpdateFactory.create(
-            "min_ipc_or_percentage"
-        )
+        self.rent_update = RentUpdateFactory.create("min_ipc_or_percentage")
 
     def test_calculate_same_rate(self):
         result = self.rent_update.calculate(
@@ -25,8 +23,8 @@ class TestMinIpcOrPercentageUpdate(unittest.TestCase):
         expected = RentUpdateResult(
             amount=Decimal("400.00"),
             updated_amount=Decimal("412.00"),
-            index_start=Decimal("71.085"),
-            index_end=Decimal("73.213"),
+            index_start=Decimal("60.030"),
+            index_end=Decimal("61.827"),
             data=Decimal("0.03"),
             month="agosto",
             year_start=2002,
@@ -48,8 +46,8 @@ class TestMinIpcOrPercentageUpdate(unittest.TestCase):
         expected = RentUpdateResult(
             amount=Decimal("400.00"),
             updated_amount=Decimal("408.80"),
-            index_start=Decimal("71.085"),
-            index_end=Decimal("73.213"),
+            index_start=Decimal("60.030"),
+            index_end=Decimal("61.827"),
             month="agosto",
             year_start=2002,
             year_end=2003,
@@ -71,8 +69,8 @@ class TestMinIpcOrPercentageUpdate(unittest.TestCase):
         expected = RentUpdateResult(
             amount=Decimal("400.00"),
             updated_amount=Decimal("412.00"),
-            index_start=Decimal("71.085"),
-            index_end=Decimal("73.213"),
+            index_start=Decimal("60.030"),
+            index_end=Decimal("61.827"),
             month="agosto",
             year_start=2002,
             year_end=2003,
@@ -158,9 +156,7 @@ class TestMinIpcOrPercentageUpdate(unittest.TestCase):
                     amount=Decimal("400.00"),
                 )
             )
-        self.assertEqual(
-            str(context.exception), "Year start is required."
-        )
+        self.assertEqual(str(context.exception), "Year start is required.")
 
     def test_calculate_missing_end_year(self):
         # Caso: Actualización de rentas de alquiler sin proporcionar el año final
@@ -173,9 +169,7 @@ class TestMinIpcOrPercentageUpdate(unittest.TestCase):
                     amount=Decimal("400.00"),
                 )
             )
-        self.assertEqual(
-            str(context.exception), "Year end is required."
-        )
+        self.assertEqual(str(context.exception), "Year end is required.")
 
     def test_calculate_invalid_start_year(self):
         # Caso: Actualización de rentas de alquiler con año inicial no válido
@@ -238,8 +232,8 @@ class TestMinIpcOrPercentageUpdate(unittest.TestCase):
         expected = RentUpdateResult(
             amount=Decimal("400.00"),
             updated_amount=Decimal("0.00"),
-            index_start=Decimal("71.085"),
-            index_end=Decimal("73.213"),
+            index_start=Decimal("60.030"),
+            index_end=Decimal("61.827"),
             month="agosto",
             year_start=2002,
             year_end=2003,
