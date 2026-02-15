@@ -24,12 +24,35 @@ class TestIpcUpdate(unittest.TestCase):
         expected = RentUpdateResult(
             amount=Decimal("400.00"),
             updated_amount=Decimal("412.00"),
-            index_start=Decimal("71.085"),
-            index_end=Decimal("73.213"),
+            index_start=Decimal("60.030"),
+            index_end=Decimal("61.827"),
             month="agosto",
             year_start=2002,
             year_end=2003,
             variation_rate=Decimal("0.03"),
+        )
+        self.assertEqual(result, expected)
+
+    def test_calculate_jan_2025_to_jan_2026(self):
+        # Caso: Actualización de rentas de alquiler con el IPC entre enero 2025 y enero 2026.
+        # Este test comprueba el cambio de incide base 2025
+        result = self.rent_update.calculate(
+            RentUpdateInput(
+                amount=Decimal("400.00"),
+                year_start=2025,
+                year_end=2026,
+                month=1,
+            )
+        )
+        expected = RentUpdateResult(
+            amount=Decimal("400.00"),
+            updated_amount=Decimal("409.20"),
+            index_start=Decimal("98.579"),
+            index_end=Decimal("100.836"),
+            month="enero",
+            year_start=2025,
+            year_end=2026,
+            variation_rate=Decimal("0.023"),
         )
         self.assertEqual(result, expected)
 
@@ -46,6 +69,7 @@ class TestIpcUpdate(unittest.TestCase):
                 amount=Decimal("400.00"),
             )
         )
+        print(result.as_dict())
         expected = RentUpdateResult(
             amount=Decimal("400.00"),
             updated_amount=Decimal("412.40"),
@@ -153,9 +177,7 @@ class TestIpcUpdate(unittest.TestCase):
                     amount=Decimal("400.00"),
                 )
             )
-        self.assertEqual(
-            str(context.exception), "Year start is required."
-        )
+        self.assertEqual(str(context.exception), "Year start is required.")
 
     def test_calculate_missing_end_year(self):
         # Caso: Actualización de rentas de alquiler sin proporcionar el año final
@@ -167,9 +189,7 @@ class TestIpcUpdate(unittest.TestCase):
                     amount=Decimal("400.00"),
                 )
             )
-        self.assertEqual(
-            str(context.exception), "Year end is required."
-        )
+        self.assertEqual(str(context.exception), "Year end is required.")
 
     def test_calculate_invalid_start_year(self):
         # Caso: Actualización de rentas de alquiler con año inicial no válido
