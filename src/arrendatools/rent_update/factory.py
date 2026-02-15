@@ -1,9 +1,19 @@
 from __future__ import annotations
 
-from importlib import import_module, metadata
+from importlib import metadata
 from typing import Dict, Type
 
 from arrendatools.rent_update.base import RentUpdateMethod
+from arrendatools.rent_update.strategies.fixed_amount import FixedAmountUpdate
+from arrendatools.rent_update.strategies.ipc import IpcUpdate
+from arrendatools.rent_update.strategies.ipc_then_percentage import (
+    IpcThenPercentageUpdate,
+)
+from arrendatools.rent_update.strategies.irav import IravUpdate
+from arrendatools.rent_update.strategies.min_ipc_or_percentage import (
+    MinIpcOrPercentageUpdate,
+)
+from arrendatools.rent_update.strategies.percentage import PercentageUpdate
 
 
 class RentUpdateFactory:
@@ -12,13 +22,13 @@ class RentUpdateFactory:
     _registry: Dict[str, Type[RentUpdateMethod]] = {}
     _entry_points_loaded = False
     _builtins_loaded = False
-    _builtin_paths = {
-        "percentage": "arrendatools.rent_update.strategies.percentage:PercentageUpdate",
-        "fixed_amount": "arrendatools.rent_update.strategies.fixed_amount:FixedAmountUpdate",
-        "ipc": "arrendatools.rent_update.strategies.ipc:IpcUpdate",
-        "ipc_then_percentage": "arrendatools.rent_update.strategies.ipc_then_percentage:IpcThenPercentageUpdate",
-        "irav": "arrendatools.rent_update.strategies.irav:IravUpdate",
-        "min_ipc_or_percentage": "arrendatools.rent_update.strategies.min_ipc_or_percentage:MinIpcOrPercentageUpdate",
+    _builtin_classes = {
+        "percentage": PercentageUpdate,
+        "fixed_amount": FixedAmountUpdate,
+        "ipc": IpcUpdate,
+        "ipc_then_percentage": IpcThenPercentageUpdate,
+        "irav": IravUpdate,
+        "min_ipc_or_percentage": MinIpcOrPercentageUpdate,
     }
 
     @classmethod
@@ -35,10 +45,7 @@ class RentUpdateFactory:
         if cls._builtins_loaded:
             return
 
-        for key, path in cls._builtin_paths.items():
-            module_path, class_name = path.split(":")
-            module = import_module(module_path)
-            klass = getattr(module, class_name)
+        for key, klass in cls._builtin_classes.items():
             cls.register(key, klass)
 
         cls._builtins_loaded = True

@@ -14,12 +14,14 @@ Módulo de python para calcular la actualización de rentas de alquiler en Espa�
 El cálculo usando el IPC (LAU), se basa según lo descrito en la página web del [Instituto Nacional de Estadística (INE)](https://www.ine.es/ss/Satellite?c=Page&cid=1254735905720&pagename=ProductosYServicios%2FPYSLayout&L=0&p=1254735893337). Es equivalente a utilizar la calculadora publicada por el INE en el siguiente enlace [Actualización de rentas con el IPC general (sistema IPC base 2021) para periodos anuales completos](https://www.ine.es/calcula).
 
 ## Limitaciones
+
 Este módulo es válido solamente:
 - En España
 - Actualización usando el IPC: Para los periodos comprendidos entre marzo de 1954 y el último mes con datos de IPC publicados por el INE.
 - Actualización usando el IRAV: Para los periodos comprendidos entre noviembre de 2024 y el último mes con datos de IRAV publicados por el INE.
 
 ## Estructura
+
 El modulo utiliza una arquitectura basada en clases con un patron Factory para la creacion dinamica de diferentes metodos de actualizacion:
 
 1. **`RentUpdateMethod`**: Clase base abstracta que define la interfaz para las actualizaciones.
@@ -47,6 +49,7 @@ La factory espera un `RentUpdateInput` y devuelve un `RentUpdateResult`.
 
 
 ### Parámetros de entrada
+
 Los parametros se proporcionan a traves de `RentUpdateInput`.
 `amount (Decimal)`: **Obligatorio**. La cantidad de la renta a actualizar.
 
@@ -59,6 +62,7 @@ Los parametros se proporcionan a traves de `RentUpdateInput`.
 `data (Decimal)`: Obligatorio para los tipos de actualizacion **percentage**, **fixed_amount** y **min_ipc_or_percentage**. Dato adicional para hacer los calculos, por ejemplo en la actualizacion por porcentaje es el porcentaje de actualizacion (-1 -> -100% y 1 -> 100%). En la actualizacion por cantidad fija es la cantidad a actualizar.
 
 ### Retorno
+
 La funcion devuelve un `RentUpdateResult` (puedes usar `as_dict()` para obtener un diccionario) con los siguientes campos:
 
 `amount (Decimal)`: **Obligatorio**. La cantidad pasada inicialmente por el usuario.
@@ -119,29 +123,29 @@ Esta version introduce cambios de entorno y tooling. Pasos recomendados:
 1. **Python minimo**: actualiza tu runtime a Python 3.10 o superior.
 2. **Instalacion**: reinstala el paquete en editable si trabajas en local.
 
-```bash
-python -m pip install -e .
-```
+    ```bash
+    python -m pip install -e .
+    ```
 
 3. **Tests**: si tenias scripts con `unittest`, migra a `pytest`.
 
-```bash
-python -m pytest
-```
+    ```bash
+    python -m pytest
+    ```
 
 4. **CI**: si tu pipeline usaba `unittest`, cambia a `tox` o `pytest`.
 
-```bash
-tox -e py310
-```
+    ```bash
+    tox -e py310
+    ```
 
 5. **Nuevas estrategias**: se anade `ipc_then_percentage` en la factory.
 
-```python
-from arrendatools.rent_update.factory import RentUpdateFactory
+    ```python
+    from arrendatools.rent_update.factory import RentUpdateFactory
 
-strategy = RentUpdateFactory.create("ipc_then_percentage")
-```
+    strategy = RentUpdateFactory.create("ipc_then_percentage")
+    ```
 
 ### Cambios relevantes desde v1
 
@@ -175,6 +179,7 @@ print(resultado.as_dict())
 ## Crear y registrar nuevas estrategias
 
 ### 1) Implementar una estrategia
+
 Crea una clase que herede de `RentUpdateMethod` y reimplemente `calculate()` (y opcionalmente `validate_inputs()`):
 
 ```python
@@ -197,6 +202,7 @@ class CustomUpdate(RentUpdateMethod):
 ```
 
 ### 2) Registrar via entry points (recomendado)
+
 En tu propio paquete, declara el entry point en `pyproject.toml`:
 
 ```toml
@@ -215,6 +221,7 @@ custom_update = RentUpdateFactory.create("custom")
 Nota: las claves de estrategia son case-insensitive y se normalizan a `snake_case` en minusculas. Usa nombres claros y estables (por ejemplo, `custom`, `ipc`, `min_ipc_or_percentage`) para evitar colisiones.
 
 ### 3) Registro manual (para uso local)
+
 Si no quieres entry points, puedes registrar la clase en runtime:
 
 ```python
@@ -226,6 +233,7 @@ custom_update = RentUpdateFactory.create("custom")
 ```
 
 ## Descargo de responsabilidad
+
 Este módulo proporciona una opción para actualizar una renta de alquiler en España por anualidades completas usando varios métodos como el IPC (LAU) o IRAV y realiza los cálculos necesarios conectándose a la página web del INE. Sin embargo, es importante tener en cuenta que este módulo no garantiza el cálculo correcto ni sirve como certificación oficial ante el arrendatario. **El usuario es responsable de verificar la exactitud de los datos generados y de obtener el certificado correspondiente en la página web del INE si es necesario.**
 
 Es importante destacar que **el autor de este módulo está exento de cualquier tipo de responsabilidad derivada del uso de la información generada por este módulo**. La veracidad y exactitud de los datos generados son responsabilidad exclusiva del usuario. Cualquier sanción que pudiera derivarse del uso correcto, incorrecto o fraudulento de los datos generados por este módulo será responsabilidad exclusiva del usuario.
